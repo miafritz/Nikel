@@ -58,7 +58,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
 
     alert("Conta criada com sucesso!");
 });
-
+//verifica se o usuario esta logado
 function checkLogged()  {
     if(session) {
         sessionStorage.setItem("logged", session);
@@ -71,11 +71,11 @@ function checkLogged()  {
         window.location.href = "home.html";
     }
 }
-
+//salva conta no localstorage
 function saveAccount(data) {
     localStorage.setItem(data.email, JSON.stringify(data));
 }
-
+//salva a sessão do usuário
 function saveSession(data, saveSession) {
     if(saveSession) {
         localStorage.setItem("session", data);
@@ -83,7 +83,7 @@ function saveSession(data, saveSession) {
 
     sessionStorage.setItem("logged", data);
 }
-
+//pega dados de uma conta pelo email
 function getAccount(key) {
     const account = localStorage.getItem(key);
 

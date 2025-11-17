@@ -37,7 +37,7 @@ document.getElementById("transaction-form").addEventListener("submit", function(
 });
 
 checkLogged();
-
+//verifica se usuario esta logado e carrega os dados
 function checkLogged()  {
     if(session) {
         sessionStorage.setItem("logged", session);
@@ -60,14 +60,14 @@ function checkLogged()  {
     getCashOut();
     getTotal();
 }
-
+//faz logout do usuario e limpa sessão
 function logout() {
     sessionStorage.removeItem("logged");
     localStorage.removeItem("session");
 
     window.location.href = "index.html";
 }
-
+//pega e mostra as transações de entrada
 function getCashIn() {
     const transactions = data.transactions;
 
@@ -106,7 +106,7 @@ function getCashIn() {
         document.getElementById("cash-in-list").innerHTML = cashInHtml
     }
 }
-
+//pega e mostra as transações de saída
 function getCashOut() {
     const transactions = data.transactions;
 
@@ -145,7 +145,7 @@ function getCashOut() {
         document.getElementById("cash-out-list").innerHTML = cashInHtml
     }
 }
-
+//calcula e mostra o total das transações
 function getTotal() {
     const transactions = data.transactions;
     let total = 0;
@@ -160,7 +160,7 @@ function getTotal() {
 
     document.getElementById("total").innerHTML = `R$ ${total.toFixed(2)}`;
 }
-
+//salva os dados do usuario no local storage
 function saveData(data) {
     localStorage.setItem(logged, JSON.stringify(data));
 }

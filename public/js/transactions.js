@@ -5,7 +5,7 @@ const session = localStorage.getItem("session");
 let data = {
     transactions: []
 };
-
+//botão de logout
 document.getElementById("button-logout").addEventListener("click", logout);
 
 //adicionar lançamento
@@ -32,7 +32,7 @@ document.getElementById("transaction-form").addEventListener("submit", function(
 });
 
 checkLogged();
-
+//verifica se o usuario esta logado e carrega os dados
 function checkLogged()  {
     if(session) {
         sessionStorage.setItem("logged", session);
@@ -52,14 +52,14 @@ function checkLogged()  {
     getTransactions();
 
 }
-
+//faz logout e limpa a sessão
 function logout() {
     sessionStorage.removeItem("logged");
     localStorage.removeItem("session");
 
     window.location.href = "index.html";
 }
-
+//mostra todas as transações na tabela
 function getTransactions() {
     const transactions = data.transactions;
     let transactionsHtml = ``;
@@ -85,7 +85,7 @@ function getTransactions() {
 
     document.getElementById("transactions-list").innerHTML = transactionsHtml
 }
-
+//salva os dados no localstorage
 function saveData(data) {
     localStorage.setItem(logged, JSON.stringify(data));
 }
